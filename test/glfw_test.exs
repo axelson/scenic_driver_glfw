@@ -61,11 +61,17 @@ defmodule Scenic.Driver.GlfwTest do
     scene_ref = make_ref()
     graph_key = {:graph, scene_ref, nil}
 
+    IO.inspect(@parrot_path, label: "@parrot_path")
+    IO.inspect(@parrot_hash, label: "@parrot_hash")
     # load the parrot texture into the cache
     assert Scenic.Cache.Static.Texture.load(@parrot_path, @parrot_hash) == {:ok, @parrot_hash}
 
     # give the port time to spin up
     Process.sleep(9500)
+
+    Glfw.Cache.load_static_texture(@parrot_hash, state.port())
+    |> IO.inspect(label: "loaded")
+
     assert Glfw.Cache.load_static_texture(@parrot_hash, state.port) == true
 
     # clear
