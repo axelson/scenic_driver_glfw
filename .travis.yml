@@ -7,7 +7,7 @@ matrix:
       elixir: 1.8.2
 script:
   - mix format --check-formatted
-  # - mix test
+  - mix test
 addons:
   apt:
     packages:
