@@ -65,7 +65,7 @@ defmodule Scenic.Driver.GlfwTest do
     assert Scenic.Cache.Static.Texture.load(@parrot_path, @parrot_hash) == {:ok, @parrot_hash}
 
     # give the port time to spin up
-    Process.sleep(1500)
+    Process.sleep(9500)
     assert Glfw.Cache.load_static_texture(@parrot_hash, state.port) == true
 
     # clear
